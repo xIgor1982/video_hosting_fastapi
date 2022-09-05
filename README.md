@@ -1,5 +1,18 @@
 # video_hosting_fastapi
 
-video_hosting
+# Простой видеохостинг / Simple video hosting
 
-тестовый коммит с компьютера
+## Backend
+
+- Framework - FastAPI
+- ORM - ORMAR
+- DB - SQLite
+
+## О Чем проект:
+
+- Авторизация - oauth google
+- Загрузка пользователем коротких видео
+- Просмотр видео
+- Модерация
+- Оценки
+- Подписчики
