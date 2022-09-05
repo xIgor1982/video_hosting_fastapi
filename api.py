@@ -3,6 +3,7 @@ from typing import List
 from fastapi import APIRouter, UploadFile, File, Form, Request
 from fastapi.responses import JSONResponse
 from schemas import UploadVideo, User, GetVideo, Message
+from models import Video
 
 video_router = APIRouter()
 
@@ -21,6 +22,12 @@ async def upload_image(files: List[UploadFile] = File(...)):
 			shutil.copyfileobj(img.file, buffer)
 	
 	return {"file_name" : "Good"}
+
+
+@video_router.post("/video")
+async def create_video(video: Video):
+	await video.save()
+	return video
 
 
 @video_router.get("/video", response_model=GetVideo, responses={404: {"model": Message}})

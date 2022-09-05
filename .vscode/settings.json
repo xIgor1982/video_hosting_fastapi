@@ -1,3 +1,11 @@
 {
-	"cSpell.words": ["fastapi", "ormar", "pydantic", "sqlalchemy"]
+	"cSpell.words": ["fastapi", "ormar", "pydantic", "sqlalchemy"],
+	"sqltools.connections": [
+		{
+			"previewLimit": 50,
+			"driver": "SQLite",
+			"name": "sqlite",
+			"database": "\\\\wsl.localhost\\Ubuntu-22.04\\opt\\video_hosting_fastapi\\sqlite.db"
+		}
+	]
 }
