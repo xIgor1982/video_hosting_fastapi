@@ -12,7 +12,7 @@ from starlette.templating import Jinja2Templates
 
 from schemas import UploadVideo, GetVideo, Message
 from models import Video, User
-from services import write_video
+from services import save_video
 
 
 video_router = APIRouter()
@@ -27,7 +27,12 @@ async def create_video(
 	file: UploadFile = File(...)
 ):
 	user = await User.objects.first()
-
+	return await save_video(
+		user=user, 
+		file=file, title=title, 
+		description=description, 
+		background_tasks=background_tasks
+	)
 
 
 # @video_router.get("/video/{video_pk}", responses={404: {'model':Message}})

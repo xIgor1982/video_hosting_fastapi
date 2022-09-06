@@ -12,19 +12,13 @@ class Video:
 
 
 async def save_video(
-	background_tasks: BackgroundTasks,
-	title: str = Form(...), 
-	description: str = Form(...), 
-	file: UploadFile = File(...)
+	user: User,
+	file: UploadFile,
+	title: str,
+	description:str,
+	background_tasks: BackgroundTasks
 ):
-	# file_name = Path("media", str(user.dict().get('id')), f'{str(uuid4())}.mp4')
-	id_user = user.dict().get('id')
-
-	# Временная мера - лучше создавать каталог пользователя при создании пользователя 1 раз (мое решение)
-	if not os.path.isdir(f'media/{id_user}'):
-		os.mkdir(f'media/{id_user}')
-
-	file_name = f"media/{id_user}/{uuid4()}.mp4"
+	file_name = f"media/{user}/{uuid4()}.mp4"
 
 	if file.content_type == 'video/mp4':
 		background_tasks.add_task(write_video, file_name, file)
@@ -33,7 +27,7 @@ async def save_video(
 
 	info = UploadVideo(title=title, description=description)
 	user = await User.objects.first()
-
+	
 	return await Video.objects.create(file=file_name, user=user, **info.dict())
 
 
