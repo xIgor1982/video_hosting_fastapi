@@ -1,5 +1,13 @@
 {
-	"cSpell.words": ["fastapi", "ormar", "pydantic", "sqlalchemy"],
+	"cSpell.words": [
+		"aiofiles",
+		"fastapi",
+		"ormar",
+		"pydantic",
+		"sqlalchemy",
+		"starlette",
+		"templating"
+	],
 	"sqltools.connections": [
 		{
 			"previewLimit": 50,
