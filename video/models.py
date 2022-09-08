@@ -1,7 +1,7 @@
 import datetime
 import ormar
 
-from typing import Optional, Union
+from typing import Optional, Union, Dict, List
 
 from db import MainMeta
 
@@ -11,7 +11,6 @@ class User(ormar.Model):
         pass
 
     id: int = ormar.Integer(primary_key=True)
-    username: str = ormar.String(max_length=100)
 
 
 class Video(ormar.Model):
@@ -22,6 +21,11 @@ class Video(ormar.Model):
     title: str = ormar.String(max_length=50)
     description: str = ormar.String(max_length=500)
     file: str = ormar.String(max_length=1000)
-    create_at: datetime.datetime = ormar.DateTime(
-        default=datetime.datetime.now)
-    user: Union[User, int, None] = ormar.ForeignKey(User)
+    create_at: datetime.datetime = ormar.DateTime(default=datetime.datetime.now)
+    user: Optional[Union[User, Dict]] = ormar.ForeignKey(User, related_name="user_video")
+    like_count: int = ormar.Integer(default=0)
+    like_user: Optional[Union[List[User], Dict]] = ormar.ManyToMany(
+        User, related_name="like_users"
+        # User, related_name="like_users", through=UserLike
+    )
+

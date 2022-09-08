@@ -2,11 +2,13 @@
 	"cSpell.words": [
 		"aiofiles",
 		"fastapi",
+		"idinfo",
 		"ormar",
 		"pydantic",
 		"sqlalchemy",
 		"starlette",
-		"templating"
+		"templating",
+		"tokenizator"
 	],
 	"sqltools.connections": [
 		{
