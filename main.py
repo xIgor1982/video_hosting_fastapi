@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from db import database, metadata, engine
 
-from followers.api import follower_router
+# from followers.api import follower_router
 from video.api import video_router
 from user.api import user_router
 
@@ -28,5 +28,5 @@ async def shutdown() -> None:
 
 app.include_router(user_router)
 app.include_router(video_router)
-app.include_router(follower_router)
+# app.include_router(follower_router)
 
